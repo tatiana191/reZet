@@ -4,30 +4,58 @@ let words = [
     ["He","loves","tacos"]
 ];
 
+
+
 function limitString () {
+
+
+    function splitArray(words, chunk) {
+
+        let newArray = [];
+
+        for (let i = 0; i < words[1].length; i += chunk) {
+            newArray.push(words.slice(i, i + chunk));
+        }
+        return newArray;
+    }
+
+    let res = splitArray(words[1], 3);
+
+
+    words.splice(1, 0, res[0],res[1],);
+    words.splice(3,1)
     words.push(['****************']);
     words.unshift(['****************']);
-    let limit = 16;
-    let result = [];
+
+    let limitString = 16;
+    let p = document.createElement("p");
+
+    let string;
+    for (let i = 0; i < words.length; i++) {
+        let result = "";
+        let amountSymbol = +words[i].toString().length;
 
 
-     for ( let i = 0; i < words.length; i++){
-       let symbol = +words[i].toString().length;
+        if (amountSymbol < limitString) {
 
+            string = Array(limitString - amountSymbol).fill('\xa0').join('') + words[i].join(' ')
+            result = '*' + string + '*' + "<br>";
 
-        for (let k = 0; k < 1; k++) {
-            if (symbol < limit) {
-                result += '*' + words[i].join(' ') + '*' + '<br>';
-            }
-            else {
-                result += '*' + words[i].join(' ') + '*' + '<br>';
-            }
+            console.log(result);
+        } else {
+            result = '*' + words[i].join(' ') + '*' + "<br>";
+
         }
-     }
-     document.querySelector('.output').innerHTML = result;
+
+        p.append(result)
 
     }
+
+    document.querySelector('.output').innerHTML = p.textContent;
+
+}
 document.querySelector('.button').onclick = limitString;
+
 
 
 
