@@ -28,8 +28,6 @@ function limitString () {
     words.unshift(['****************']);
 
     let limitString = 16;
-    let p = document.createElement("p");
-
     let string;
     for (let i = 0; i < words.length; i++) {
         let result = "";
@@ -39,22 +37,21 @@ function limitString () {
         if (amountSymbol < limitString) {
 
             string = Array(limitString - amountSymbol).fill('\xa0').join('') + words[i].join(' ')
-            result = '*' + string + '*' + "<br>";
+            result = '*' + string + '*';
 
             console.log(result);
+
         } else {
-            result = '*' + words[i].join(' ') + '*' + "<br>";
+            result = '*' + words[i].join(' ') + '*';
 
         }
-
-        p.append(result)
-
+    console.log(result)
     }
 
-    document.querySelector('.output').innerHTML = p.textContent;
-
 }
-document.querySelector('.button').onclick = limitString;
+limitString();
+
+
 
 
 
