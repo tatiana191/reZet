@@ -17,6 +17,10 @@ function  compareMatrix () {
 
         }
     }
-    document.querySelector('.out').innerHTML = result;
+    console.log(result)
 }
-document.querySelector('.button').onclick = compareMatrix;
+compareMatrix();
+
+
+//document.querySelector('.button').onclick = compareMatrix;
+//document.querySelector('.out').innerHTML = result;
